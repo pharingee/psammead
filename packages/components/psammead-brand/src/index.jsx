@@ -30,7 +30,7 @@ const SvgWrapper = styled.div`
 `;
 
 const Banner = styled.div`
-  background-color: ${C_POSTBOX};
+  background-color: hello;
   ${({ svgHeight }) =>
     conditionallyRenderHeight(svgHeight, PADDING_AROUND_SVG_BELOW_400PX)}
   width: 100%;
