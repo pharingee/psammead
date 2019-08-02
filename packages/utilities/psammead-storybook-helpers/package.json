@@ -1,6 +1,6 @@
 {
   "name": "@bbc/psammead-storybook-helpers",
-  "version": "3.3.1",
+  "version": "6.0.0",
   "main": "dist/index.js",
   "module": "esm/index.js",
   "sideEffects": false,
@@ -26,11 +26,11 @@
     "knobs"
   ],
   "dependencies": {
-    "@bbc/gel-foundations": "^3.0.3",
+    "@bbc/gel-foundations": "^6.0.0",
     "react-helmet": "^5.2.1"
   },
   "devDependencies": {
-    "@bbc/psammead-test-helpers": "^1.0.2",
+    "@bbc/psammead-test-helpers": "^6.0.0",
     "react": "^16.8.6"
   }
 }

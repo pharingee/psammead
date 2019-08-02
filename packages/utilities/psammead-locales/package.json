@@ -1,6 +1,6 @@
 {
   "name": "@bbc/psammead-locales",
-  "version": "1.0.2",
+  "version": "6.0.0",
   "description": "A collection of locale configs, used in BBC World Service sites",
   "repository": {
     "type": "git",
@@ -27,8 +27,8 @@
     "moment": "^2.24.0"
   },
   "devDependencies": {
-    "@bbc/gel-foundations": "^3.0.3",
-    "@bbc/psammead-styles": "^1.2.0",
+    "@bbc/gel-foundations": "^6.0.0",
+    "@bbc/psammead-styles": "^6.0.0",
     "moment": "^2.24.0"
   }
 }
