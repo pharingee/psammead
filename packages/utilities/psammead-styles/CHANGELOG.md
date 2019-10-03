@@ -3,6 +3,21 @@
 <!-- prettier-ignore -->
 | Version | Description |
 |---------|-------------|
+| 4.0.1 | [PR#2273](https://github.com/bbc/psammead/pull/2273) Snapshot update |
+| 4.0.0 | [PR#2229](https://github.com/bbc/psammead/pull/2229) Convert fonts to overridable functions |
+| 3.0.0 | [PR#2250](https://github.com/bbc/psammead/pull/2250) Update Mundo, Brasil and Turkish fonts from Helmet to Reith |
+| 2.3.0 | [PR#2120](https://github.com/bbc/psammead/pull/2120) Add Scottish colour and scotland service to fonts |
+| 2.2.0 | [PR#2021](https://github.com/bbc/psammead/pull/2021) Export global styles |
+| 2.1.4 | [PR#1926](https://github.com/bbc/psammead/pull/1926) Update component storybook to use latest inputProvider changes |
+| 2.1.3 | [PR#1948](https://github.com/bbc/psammead/pull/1948) Show different font types in storybook |
+| 2.1.2 | [PR#1847](https://github.com/bbc/psammead/pull/1847) Fixed Telugu typos |
+| 2.1.1 | [PR#1803](https://github.com/bbc/psammead/pull/1803/) Patches broken links on badges in documentation |
+| 2.1.0 | [PR#1794](https://github.com/bbc/psammead/pull/1794) Add david dependency badges |
+| 2.0.4 | [PR#1777](https://github.com/bbc/psammead/pull/1777) Make psammead-styles treeshakable. |
+| 2.0.3 | [PR#1727](https://github.com/bbc/psammead/pull/1727) Fix for Latha Font URL. |
+| 2.0.2 | [PR#1682](https://github.com/bbc/psammead/pull/1682) Move all dev dependencies to top level package.json |
+| 2.0.1 | [PR#1597](https://github.com/bbc/psammead/pull/1597) Bump @bbc/gel-foundations, @bbc/psammead-storybook-helpers, @bbc/psammead-test-helpers |
+| 2.0.0 | [PR#1516](https://github.com/bbc/psammead/pull/1516) Add font-family and font-face declarations for World Service fonts. Changes `getSansItalic` to `getSansRegularItalic`. |
 | 1.2.0 | [PR#1234](https://github.com/bbc/psammead/pull/1234) Add custom CSS Grid feature detector |
 | 1.1.5 | [PR#1215](https://github.com/bbc/psammead/pull/1215) Fix `sans serif` typo |
 | 1.1.4 | [PR#1066](https://github.com/bbc/psammead/pull/1066) Fix Serif Medium font. |

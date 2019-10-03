@@ -1,16 +1,18 @@
-# psammead-test-helpers - [![Known Vulnerabilities](https://snyk.io/test/github/bbc/psammead/badge.svg?targetFile=packages%2Futilities%2Fpsammead-test-helpers%2Fpackage.json)](https://snyk.io/test/github/bbc/psammead?targetFile=packages%2Futilities%2Fpsammead-test-helpers%2Fpackage.json) [![GitHub license](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/bbc/psammead/blob/latest/LICENSE) [![npm version](https://img.shields.io/npm/v/@bbc/psammead-test-helpers.svg)](https://www.npmjs.com/package/@bbc/psammead-test-helpers) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/bbc/psammead/blob/latest/CONTRIBUTING.md)
+# psammead-test-helpers - [![Known Vulnerabilities](https://snyk.io/test/github/bbc/psammead/badge.svg?targetFile=packages%2Futilities%2Fpsammead-test-helpers%2Fpackage.json)](https://snyk.io/test/github/bbc/psammead?targetFile=packages%2Futilities%2Fpsammead-test-helpers%2Fpackage.json) [![Dependency Status](https://david-dm.org/bbc/psammead.svg?path=packages/utilities/psammead-test-helpers)](https://david-dm.org/bbc/psammead?path=packages/utilities/psammead-test-helpers) [![peerDependencies Status](https://david-dm.org/bbc/psammead/peer-status.svg?path=packages/utilities/psammead-test-helpers)](https://david-dm.org/bbc/psammead?path=packages/utilities/psammead-test-helpers&type=peer) [![GitHub license](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/bbc/psammead/blob/latest/LICENSE) [![npm version](https://img.shields.io/npm/v/@bbc/psammead-test-helpers.svg)](https://www.npmjs.com/package/@bbc/psammead-test-helpers) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/bbc/psammead/blob/latest/CONTRIBUTING.md)
 
 This package provides a collection of helper methods for implementing Jest snapshot tests for styled-components, required by many Psammead components.
 
 ## Exported Functions
 
-| Name                       | Arguments                                   | Description                                                                                                                                                                                                                      |
-| :------------------------- | :------------------------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| shouldMatchSnapshot        | title, component                            | Renders the component using react-test-renderer, converts it to JSON and asserts that it matches the given snapshot, which will be saved in the `__snapshots__` directory. The first argument `title` is the title for the test. |
-| shallowRender              | component                                   | Shallow renders the component using react-test-renderer and returns the render output                                                                                                                                            |
-| shouldShallowMatchSnapshot | title, component                            | Shallow renders the component using react-test-renderer and asserts that it matches the given snapshot, which will be saved in the `__snapshots__` directory. The first argument `title` is the title for the test.              |
-| isNull                     | title, component                            | Renders the component using react-test-renderer, converts it to JSON and asserts that it is null. The first argument `title` is the title for the test.                                                                          |
-| testUtilityPackages        | actualExports, expectedExports, utilityName | Validates an imported utility package's exported values against an object of key-value pairs in the form `{ name_of_export: 'type of export' }`, e.g. `{ shouldMatchSnapshot: 'function' }`.                                     |
+<!-- prettier-ignore -->
+| Name | Arguments | Description |
+| :---------- | :-------------- | :--------------- |
+| shouldMatchSnapshot | title, component | Renders the component using react-test-renderer, converts it to JSON and asserts that it matches the given snapshot, which will be saved in the `__snapshots__` directory. The first argument `title` is the title for the test. |
+| isNull | title, component | Renders the component using react-test-renderer, converts it to JSON and asserts that it is null. The first argument `title` is the title for the test. |
+| testUtilityPackages | actualExports, expectedExports, utilityName | Validates an imported utility package's exported values against an object of key-value pairs in the form `{ name_of_export: 'type of export' }`, e.g. `{ shouldMatchSnapshot: 'function' }`. |
+| setWindowValue | key, value | Allows you to set variables on the window (eg. location) that are normally not writable |
+| resetWindowValue | key, value | Allows you to reset the WindowValues that are previously overwritten by the setWindowValue function |
+| suppressPropWarnings | warnings | Suppresses predicted prop warnings during tests. |
 
 ## Installation
 
@@ -27,8 +29,6 @@ shouldMatchSnapshot('should render correctly', <h1>Hello World</h1>);
 ```
 
 ## Roadmap
-
-There is currently a plan to migrate from `react-test-renderer` to `enzyme` as it provides a nicer higher-level API over the same functionality, as well as having support for more granular unit tests.
 
 ## Contributing
 

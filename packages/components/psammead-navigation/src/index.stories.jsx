@@ -1,7 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { storiesOf } from '@storybook/react';
 import {
+  color,
   select,
   number,
   text,
@@ -10,21 +11,23 @@ import {
 } from '@storybook/addon-knobs';
 import { inputProvider, dirDecorator } from '@bbc/psammead-storybook-helpers';
 import * as svgs from '@bbc/psammead-assets/svgs';
+import { C_POSTBOX, C_WHITE } from '@bbc/psammead-styles/colours';
 import VisuallyHiddenText from '@bbc/psammead-visually-hidden-text';
 import Brand from '@bbc/psammead-brand';
 import Navigation, { NavigationUl, NavigationLi } from './index';
 import igboNavData from '../testHelpers/igbo';
 import pidginNavData from '../testHelpers/pidgin';
 import yorubaNavData from '../testHelpers/yoruba';
+import arabicNavData from '../testHelpers/arabic';
+
 import notes from '../README.md';
 
 const navStoriesData = [
   {
-    title: 'igbo with Brand',
+    title: 'igbo',
     skipLinkText: 'Wụga n’ọdịnaya',
     currentPageText: 'Current page',
     data: igboNavData,
-    brand: true,
   },
   {
     title: 'pidgin',
@@ -38,17 +41,24 @@ const navStoriesData = [
     currentPageText: 'Current page',
     data: yorubaNavData,
   },
+  {
+    title: 'arabic',
+    skipLinkText: 'إذهب الى المحتوى',
+    currentPageText: 'Current page',
+    data: arabicNavData,
+    dir: 'rtl',
+  },
 ];
 
 const offScreenText = (
-  <Fragment>
+  <>
     <span
       // eslint-disable-next-line jsx-a11y/aria-role
       role="text"
     >
       <span lang="en-GB">BBC News</span>, Ìgbò - Akụkọ
     </span>
-  </Fragment>
+  </>
 );
 
 const inputs = () => {
@@ -68,6 +78,8 @@ const inputs = () => {
   const svgHeightInput = number('desired height svg', svgMaxHeight);
   const borderBottom = boolean('Border Bottom', false);
   const borderTop = boolean('Border Top', false);
+  const backgroundColour = color('Background colour', `${C_POSTBOX}`);
+  const logoColour = color('Logo colour', `${C_WHITE}`);
 
   return {
     productInput,
@@ -78,6 +90,8 @@ const inputs = () => {
     maxWidthInput,
     borderTop,
     borderBottom,
+    backgroundColour,
+    logoColour,
   };
 };
 
@@ -91,6 +105,8 @@ const getBrand = () => {
     svgChoice,
     borderBottom,
     borderTop,
+    backgroundColour,
+    logoColour,
   } = inputs();
 
   return (
@@ -104,6 +120,8 @@ const getBrand = () => {
       url="https://www.bbc.com/news"
       borderBottom={borderBottom}
       borderTop={borderTop}
+      backgroundColour={backgroundColour}
+      logoColour={logoColour}
     />
   );
 };
@@ -112,52 +130,80 @@ const StyledMain = styled.main`
   padding: 0px 1rem;
 `;
 
-const navigationStory = (skipLinkText, currentPageText, navData, brand) =>
-  inputProvider([], ({ script, dir, service }) => (
-    <Fragment>
-      {brand && getBrand()}
+const navigationStory = (skipLinkText, currentPageText, navData, dir, brand) =>
+  inputProvider({
+    // eslint-disable-next-line react/prop-types
+    componentFunction: ({ script, service }) => (
+      <>
+        {brand && getBrand()}
 
-      <Navigation script={script} skipLinkText={skipLinkText} service={service}>
-        <NavigationUl>
-          {navData.map((item, index) => {
-            const { title, url } = item;
-            const active = index === 0;
+        <Navigation
+          script={script}
+          skipLinkText={skipLinkText}
+          service={service}
+          dir={dir}
+        >
+          <NavigationUl>
+            {navData.map((item, index) => {
+              const { title, url } = item;
+              const active = index === 0;
 
-            return (
-              <NavigationLi
-                key={title}
-                url={url}
-                script={script}
-                dir={dir}
-                active={active}
-                currentPageText={currentPageText}
-                service={service}
-              >
-                {title}
-              </NavigationLi>
-            );
-          })}
-        </NavigationUl>
-      </Navigation>
-      <StyledMain>
-        <VisuallyHiddenText id="content" as="h1" tabIndex="-1">
-          {offScreenText}
-        </VisuallyHiddenText>
-      </StyledMain>
-    </Fragment>
-  ));
+              return (
+                <NavigationLi
+                  key={title}
+                  url={url}
+                  script={script}
+                  active={active}
+                  currentPageText={currentPageText}
+                  service={service}
+                >
+                  {title}
+                </NavigationLi>
+              );
+            })}
+          </NavigationUl>
+        </Navigation>
+        <StyledMain>
+          <VisuallyHiddenText id="content" as="h1" tabIndex="-1">
+            {offScreenText}
+          </VisuallyHiddenText>
+        </StyledMain>
+      </>
+    ),
+  });
 
-const stories = storiesOf('Components|Navigation', module)
+const storiesWithoutBrand = storiesOf(
+  'Components|Navigation/without brand',
+  module,
+)
   .addDecorator(withKnobs)
   .addDecorator(dirDecorator);
 
 navStoriesData.map(item => {
-  const { title, skipLinkText, currentPageText, data, brand } = item;
-  return stories.add(
+  const { title, skipLinkText, currentPageText, data, dir } = item;
+  return storiesWithoutBrand.add(
     title,
-    navigationStory(skipLinkText, currentPageText, data, brand),
+    navigationStory(skipLinkText, currentPageText, data, dir),
     {
       notes,
     },
   );
 });
+
+const storiesWithBrand = storiesOf('Components|Navigation/with brand', module)
+  .addDecorator(withKnobs)
+  .addDecorator(dirDecorator);
+
+storiesWithBrand.add(
+  navStoriesData[0].title,
+  navigationStory(
+    navStoriesData[0].skipLinkText,
+    navStoriesData[0].currentPageText,
+    igboNavData,
+    navStoriesData[0].dir,
+    true,
+  ),
+  {
+    notes,
+  },
+);

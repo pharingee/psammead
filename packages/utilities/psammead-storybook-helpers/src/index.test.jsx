@@ -56,7 +56,11 @@ describe('Psammead storybook helpers', () => {
     it('always calls the render function with a script and direction', () => {
       select.mockReturnValueOnce('news');
 
-      underTest.inputProvider([], renderFn)();
+      const inputProps = {
+        componentFunction: renderFn,
+      };
+
+      underTest.inputProvider(inputProps)();
 
       expect(renderFn).toHaveBeenCalledTimes(1);
       expect(renderFn).toHaveBeenCalledWith({
@@ -66,6 +70,7 @@ describe('Psammead storybook helpers', () => {
         service: 'news',
         locale: 'en',
       });
+
       expect(select).toHaveBeenCalledTimes(1);
       // Allows user to select all availible services
       expect(select.mock.calls[0][1].length).toEqual(
@@ -77,12 +82,12 @@ describe('Psammead storybook helpers', () => {
     it('filters services availible based on array provided', () => {
       select.mockReturnValueOnce('news');
 
-      underTest.inputProvider([], renderFn, [
-        'mundo',
-        'pidgin',
-        'yoruba',
-        'foobar',
-      ])();
+      const inputProps = {
+        componentFunction: renderFn,
+        services: ['mundo', 'pidgin', 'yoruba', 'foobar'],
+      };
+
+      underTest.inputProvider(inputProps)();
 
       expect(renderFn).toHaveBeenCalledTimes(1);
       expect(renderFn).toHaveBeenCalledWith({
@@ -97,10 +102,28 @@ describe('Psammead storybook helpers', () => {
       expect(text).toHaveBeenCalledTimes(0);
     });
 
+    it('allows default service to be set', () => {
+      select.mockReturnValueOnce('thai');
+
+      const inputProps = {
+        componentFunction: renderFn,
+        options: { defaultService: 'thai' },
+      };
+
+      underTest.inputProvider(inputProps)();
+
+      expect(select).toHaveBeenCalledTimes(1);
+      expect(select.mock.calls[0][2]).toBe('thai');
+    });
+
     it('handles scenario where config is null', () => {
       select.mockReturnValueOnce('news');
 
-      underTest.inputProvider(null, renderFn)();
+      const inputProps = {
+        componentFunction: renderFn,
+      };
+
+      underTest.inputProvider(inputProps)();
 
       expect(renderFn).toHaveBeenCalledTimes(1);
       expect(renderFn).toHaveBeenCalledWith({
@@ -119,10 +142,12 @@ describe('Psammead storybook helpers', () => {
         select.mockReturnValueOnce('news');
         text.mockImplementation((_, displayText) => displayText);
 
-        underTest.inputProvider(
-          [{ name: 'first', defaultText: 'Sole input' }],
-          renderFn,
-        )();
+        const inputProps = {
+          slots: [{ name: 'first', defaultText: 'Sole input' }],
+          componentFunction: renderFn,
+        };
+
+        underTest.inputProvider(inputProps)();
 
         expect(renderFn).toHaveBeenCalledTimes(1);
         expect(renderFn).toHaveBeenCalledWith({
@@ -134,20 +159,21 @@ describe('Psammead storybook helpers', () => {
         });
 
         expect(select).toHaveBeenCalledTimes(1);
-        expect(text).toHaveBeenCalledTimes(1);
       });
 
       it('for multiple slots', () => {
         select.mockReturnValueOnce('news');
         text.mockImplementation((_, displayText) => displayText);
 
-        underTest.inputProvider(
-          [
+        const inputProps = {
+          slots: [
             { name: 'first', defaultText: 'First input' },
             { name: 'second', defaultText: 'Second input' },
           ],
-          renderFn,
-        )();
+          componentFunction: renderFn,
+        };
+
+        underTest.inputProvider(inputProps)();
 
         expect(renderFn).toHaveBeenCalledTimes(1);
         expect(renderFn).toHaveBeenCalledWith({
@@ -159,7 +185,6 @@ describe('Psammead storybook helpers', () => {
         });
 
         expect(select).toHaveBeenCalledTimes(1);
-        expect(text).toHaveBeenCalledTimes(2);
       });
     });
 
@@ -167,7 +192,12 @@ describe('Psammead storybook helpers', () => {
       select.mockReturnValueOnce('news');
       text.mockImplementation((_, displayText) => displayText);
 
-      underTest.inputProvider([{ name: 'first' }], renderFn)();
+      const inputProps = {
+        slots: [{ name: 'first' }],
+        componentFunction: renderFn,
+      };
+
+      underTest.inputProvider(inputProps)();
 
       expect(renderFn).toHaveBeenCalledTimes(1);
       expect(renderFn).toHaveBeenCalledWith({
@@ -179,17 +209,18 @@ describe('Psammead storybook helpers', () => {
       });
 
       expect(select).toHaveBeenCalledTimes(1);
-      expect(text).toHaveBeenCalledTimes(1);
     });
 
     it('defaults to service text for non-news services', () => {
       select.mockReturnValueOnce('russian');
       text.mockImplementation((_, displayText) => displayText);
 
-      underTest.inputProvider(
-        [{ name: 'first', defaultText: 'Sole input' }],
-        renderFn,
-      )();
+      const inputProps = {
+        slots: [{ name: 'first', defaultText: 'Sole input' }],
+        componentFunction: renderFn,
+      };
+
+      underTest.inputProvider(inputProps)();
 
       expect(renderFn).toHaveBeenCalledTimes(1);
       expect(renderFn).toHaveBeenCalledWith({
@@ -208,7 +239,11 @@ describe('Psammead storybook helpers', () => {
         select.mockReturnValueOnce('russian');
         text.mockImplementation((textKnobName, displayText) => displayText);
 
-        underTest.inputProvider([], renderFn)();
+        const inputProps = {
+          componentFunction: renderFn,
+        };
+
+        underTest.inputProvider(inputProps)();
 
         expect(renderFn).toHaveBeenCalledTimes(1);
         expect(renderFn.mock.calls[0][0].dir).toBe('ltr');
@@ -218,7 +253,11 @@ describe('Psammead storybook helpers', () => {
         select.mockReturnValueOnce('arabic');
         text.mockImplementation((_, displayText) => displayText);
 
-        underTest.inputProvider([], renderFn)();
+        const inputProps = {
+          componentFunction: renderFn,
+        };
+
+        underTest.inputProvider(inputProps)();
 
         expect(renderFn).toHaveBeenCalledTimes(1);
         expect(renderFn).toHaveBeenCalledWith({

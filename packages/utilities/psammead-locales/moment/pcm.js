@@ -1,13 +1,11 @@
-const moment = require('moment');
+var moment = require('moment');
 
 moment.defineLocale('pcm', {
-  months: 'January_February_March_April_May_June_July_August_September_October_November_December'.split(
-    '_',
-  ),
+  // eslint-disable-next-line prettier/prettier
+  months: 'January_February_March_April_May_June_July_August_September_October_November_December'.split('_'),
   monthsShort: 'Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec'.split('_'),
-  weekdays: 'Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday'.split(
-    '_',
-  ),
+  // eslint-disable-next-line prettier/prettier
+  weekdays: 'Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday'.split('_'),
   weekdaysShort: 'Sun_Mon_Tue_Wed_Thu_Fri_Sat'.split('_'),
   weekdaysMin: 'Su_Mo_Tu_We_Th_Fr_Sa'.split('_'),
   longDateFormat: {
@@ -45,13 +43,13 @@ moment.defineLocale('pcm', {
   dayOfMonthOrdinalParse: /\d{1,2}(st|nd|rd|th)/,
   /* eslint-disable */
   // Copied exactly from https://github.com/moment/moment/blob/develop/locale/en-gb.js#L50-L57
-  ordinal : function (number) {
-      var b = number % 10,
-          output = (~~(number % 100 / 10) === 1) ? 'th' :
-          (b === 1) ? 'st' :
+  ordinal: function (number) {
+    var b = number % 10,
+      output = (~~(number % 100 / 10) === 1) ? 'th' :
+        (b === 1) ? 'st' :
           (b === 2) ? 'nd' :
-          (b === 3) ? 'rd' : 'th';
-      return number + output;
+            (b === 3) ? 'rd' : 'th';
+    return number + output;
   },
   week: {
     dow: 1, // Monday is the first day of the week.

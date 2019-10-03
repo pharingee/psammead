@@ -1,23 +1,49 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { shouldMatchSnapshot } from '@bbc/psammead-test-helpers';
 import { latin } from '@bbc/gel-foundations/scripts';
 import MediaIndicator from '@bbc/psammead-media-indicator';
 import { render } from '@testing-library/react';
-import StoryPromo, { Headline, Summary, Link } from './index';
+import VisuallyHiddenText from '@bbc/psammead-visually-hidden-text';
+import StoryPromo, { Headline, Summary, Link, LiveLabel } from './index';
+import relatedItems from '../testHelpers/relatedItems';
+import IndexAlsosContainer from '../testHelpers/IndexAlsosContainer';
 
 const Image = <img src="https://foobar.com/image.png" alt="Alt text" />;
 
+/* eslint-disable-next-line react/prop-types */
+const LiveComponent = ({ headline, service }) => (
+  /* eslint-disable-next-line jsx-a11y/aria-role */
+  <span role="text">
+    <LiveLabel service={service}>LIVE</LiveLabel>
+    <VisuallyHiddenText lang="en-GB">Live, </VisuallyHiddenText>
+    {headline}
+  </span>
+);
+
 // eslint-disable-next-line react/prop-types
-const Info = ({ topStory }) => (
-  <Fragment>
+const Info = ({ topStory, isLive, alsoItems }) => (
+  <>
     <Headline script={latin} topStory={topStory} service="news">
-      <Link href="https://www.bbc.co.uk/news">The headline of the promo</Link>
+      <Link href="https://www.bbc.co.uk/news">
+        {isLive ? (
+          <LiveComponent headline="The live promo headline" service="news" />
+        ) : (
+          'The headline of the promo'
+        )}
+      </Link>
     </Headline>
     <Summary script={latin} topStory={topStory} service="news">
       The summary of the promo
     </Summary>
     <time>12 March 2019</time>
-  </Fragment>
+    {topStory && alsoItems && (
+      <IndexAlsosContainer
+        alsoItems={alsoItems}
+        script={latin}
+        service="news"
+      />
+    )}
+  </>
 );
 
 const mediaInfo = (
@@ -28,6 +54,10 @@ describe('StoryPromo', () => {
   shouldMatchSnapshot(
     'should render correctly',
     <StoryPromo image={Image} info={Info({ topStory: false })} />,
+  );
+  shouldMatchSnapshot(
+    'should render Live promo correctly',
+    <StoryPromo image={Image} info={Info({ topStory: false, isLive: true })} />,
   );
 });
 
@@ -47,15 +77,31 @@ describe('StoryPromo - Top Story', () => {
     'should render correctly',
     <StoryPromo image={Image} info={Info({ topStory: true })} topStory />,
   );
-});
 
-describe('StoryPromo - Top Story with Media Indicator', () => {
   shouldMatchSnapshot(
-    'should render correctly',
+    'should render with Media Indicator correctly',
     <StoryPromo
       image={Image}
       info={Info({ topStory: true })}
       mediaIndicator={mediaInfo}
+      topStory
+    />,
+  );
+
+  shouldMatchSnapshot(
+    'should render with multiple Index Alsos correctly',
+    <StoryPromo
+      image={Image}
+      info={Info({ topStory: true, alsoItems: relatedItems })}
+      topStory
+    />,
+  );
+
+  shouldMatchSnapshot(
+    'should render with one Index Also correctly',
+    <StoryPromo
+      image={Image}
+      info={Info({ topStory: true, alsoItems: [relatedItems[0]] })}
       topStory
     />,
   );

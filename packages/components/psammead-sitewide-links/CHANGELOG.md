@@ -3,6 +3,27 @@
 <!-- prettier-ignore -->
 | Version | Description |
 |---------|-------------|
+| 3.1.13 | [PR#2289](https://github.com/bbc/psammead/pull/2289) Talos - Bump Dependencies - @bbc/psammead-styles |
+| 3.1.12 | [PR#2273](https://github.com/bbc/psammead/pull/2273) Talos - Bump Dependencies - @bbc/psammead-styles |
+| 3.1.11 | [PR#2251](https://github.com/bbc/psammead/pull/2251) Talos - Bump Dependencies - @bbc/psammead-styles |
+| 3.1.10 | [PR#2191](https://github.com/bbc/psammead/pull/2191) Talos - Bump Dependencies - @bbc/gel-foundations |
+| 3.1.9 | [PR#2145](https://github.com/bbc/psammead/pull/2145) Talos - Bump Dependencies - @bbc/psammead-styles |
+| 3.1.8 | [PR#2081](https://github.com/bbc/psammead/pull/2081) Talos - Bump Dependencies - @bbc/psammead-styles |
+| 3.1.7 | [PR#1926](https://github.com/bbc/psammead/pull/1926) Update component storybook to use latest inputProvider changes |
+| 3.1.6 | [PR#1993](https://github.com/bbc/psammead/pull/1993) Talos - Bump Dependencies |
+| 3.1.5 | [PR#1942](https://github.com/bbc/psammead/pull/1942) Talos - Bump React to 16.9.0 |
+| 3.1.4 | [PR#1931](https://github.com/bbc/psammead/pull/1931) Talos - Bump Dependencies |
+| 3.1.3 | [PR#1826](https://github.com/bbc/psammead/pull/1826) Talos - Bump Dependencies |
+| 3.1.2 | [PR#1804](https://github.com/bbc/psammead/pull/1804) Talos - Bump Dependencies |
+| 3.1.1 | [PR#1803](https://github.com/bbc/psammead/pull/1803/) Patches broken links on badges in documentation |
+| 3.1.0 | [PR#1794](https://github.com/bbc/psammead/pull/1794) Add david dependency badges |
+| 3.0.5 | [PR#1734](https://github.com/bbc/psammead/pull/1734) Talos - Bump Dependencies |
+| 3.0.4   | [PR#1731](https://github.com/bbc/psammead/pull/1731) Add space after copyright text |
+| 3.0.3   | [PR#1685](https://github.com/bbc/psammead/pull/1685) Bump dependencies |
+| 3.0.2 | [PR#1682](https://github.com/bbc/psammead/pull/1682) Move all dev dependencies to top level package.json |
+| 3.0.1 | [PR#1599](https://github.com/bbc/psammead/pull/1599) Bump dependencies |
+| 3.0.0 | [PR#1524](https://github.com/bbc/psammead/pull/1524) Change `copyrighText` prop from `string` to `node`  |
+| 2.2.1 | [PR#1518](https://github.com/bbc/psammead/pull/1518) Clear unit test warnings |
 | 2.2.0 | [PR#1408](https://github.com/bbc/psammead/pull/1408) Use `@bbc/psammead-styles/detection` to detect grid support |
 | 2.1.1 | [PR#1362](https://github.com/bbc/psammead/pull/1362) Use `text-decoration` styling instead of border-bottom |
 | 2.1.0 | [PR#1233](https://github.com/bbc/psammead/pull/1233) Add ESM modules entry |

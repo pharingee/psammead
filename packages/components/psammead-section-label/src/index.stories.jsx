@@ -9,15 +9,16 @@ storiesOf('Components|SectionLabel', module)
   .addDecorator(withKnobs)
   .add(
     'default',
-    inputProvider(
-      [{ name: 'title', defaultText: 'Most Read' }],
-      ({ slotTexts: [title], script, dir, service }) => (
+    inputProvider({
+      slots: [{ name: 'title', defaultText: 'Most Read' }],
+      // eslint-disable-next-line react/prop-types
+      componentFunction: ({ slotTexts: [title], script, dir, service }) => (
         <SectionLabel
           script={script}
           dir={dir}
           bar={boolean('show bar?', true)}
           visuallyHidden={boolean(
-            'visually hide component when width less than 600px?',
+            'visually hide component for all breakpoints?',
             false,
           )}
           labelId="example-section-label"
@@ -26,6 +27,31 @@ storiesOf('Components|SectionLabel', module)
           {title}
         </SectionLabel>
       ),
-    ),
+    }),
+    { notes, knobs: { escapeHTML: false } },
+  )
+  .add(
+    'with a link',
+    inputProvider({
+      slots: [{ name: 'title', defaultText: 'Most Read' }],
+      // eslint-disable-next-line react/prop-types
+      componentFunction: ({ slotTexts: [title], script, dir, service }) => (
+        <SectionLabel
+          script={script}
+          dir={dir}
+          bar={boolean('show bar?', true)}
+          visuallyHidden={boolean(
+            'visually hide component for all breakpoints?',
+            false,
+          )}
+          labelId="example-section-label"
+          service={service}
+          linkText="See All"
+          href="https://www.bbc.com/igbo"
+        >
+          {title}
+        </SectionLabel>
+      ),
+    }),
     { notes, knobs: { escapeHTML: false } },
   );

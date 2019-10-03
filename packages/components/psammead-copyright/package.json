@@ -1,6 +1,6 @@
 {
   "name": "@bbc/psammead-copyright",
-  "version": "6.0.0",
+  "version": "1.2.12",
   "main": "dist/index.js",
   "module": "esm/index.js",
   "sideEffects": false,
@@ -19,13 +19,8 @@
   },
   "homepage": "https://github.com/bbc/psammead/blob/latest/packages/components/psammead-copyright/README.md",
   "dependencies": {
-    "@bbc/gel-foundations": "^6.0.0",
-    "@bbc/psammead-styles": "^6.0.0"
-  },
-  "devDependencies": {
-    "@bbc/psammead-test-helpers": "^6.0.0",
-    "@bbc/psammead-visually-hidden-text": "^6.0.0",
-    "styled-components": "^4.3.2"
+    "@bbc/gel-foundations": "^3.4.0",
+    "@bbc/psammead-styles": "^4.0.1"
   },
   "peerDependencies": {
     "styled-components": "^4.3.2"

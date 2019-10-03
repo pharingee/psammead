@@ -1,4 +1,4 @@
-# psammead-sitewide-links - [![Known Vulnerabilities](https://snyk.io/test/github/bbc/psammead/badge.svg?targetFile=packages%2Fcomponents%2Fpsammead-sitewide-links%2Fpackage.json)](https://snyk.io/test/github/bbc/psammead?targetFile=packages%2Fcomponents%2Fpsammead-sitewide-links%2Fpackage.json) [![Storybook](https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg?sanitize=true)](https://bbc.github.io/psammead/?path=/story/sitewidelinks--default) [![GitHub license](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/bbc/psammead/blob/latest/LICENSE) [![npm version](https://img.shields.io/npm/v/@bbc/psammead-sitewide-links.svg)](https://www.npmjs.com/package/@bbc/psammead-sitewide-links) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://reactjs.org/docs/how-to-contribute.html#your-first-pull-request)
+# psammead-sitewide-links - [![Known Vulnerabilities](https://snyk.io/test/github/bbc/psammead/badge.svg?targetFile=packages%2Fcomponents%2Fpsammead-sitewide-links%2Fpackage.json)](https://snyk.io/test/github/bbc/psammead?targetFile=packages%2Fcomponents%2Fpsammead-sitewide-links%2Fpackage.json) [![Dependency Status](https://david-dm.org/bbc/psammead.svg?path=packages/components/psammead-sitewide-links)](https://david-dm.org/bbc/psammead?path=packages/components/psammead-sitewide-links) [![peerDependencies Status](https://david-dm.org/bbc/psammead/peer-status.svg?path=packages/components/psammead-sitewide-links)](https://david-dm.org/bbc/psammead?path=packages/components/psammead-sitewide-links&type=peer) [![Storybook](https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg?sanitize=true)](https://bbc.github.io/psammead/?path=/story/sitewidelinks--default) [![GitHub license](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/bbc/psammead/blob/latest/LICENSE) [![npm version](https://img.shields.io/npm/v/@bbc/psammead-sitewide-links.svg)](https://www.npmjs.com/package/@bbc/psammead-sitewide-links) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://reactjs.org/docs/how-to-contribute.html#your-first-pull-request)
 
 ## Description
 
@@ -16,7 +16,7 @@ npm install @bbc/psammead-sitewide-links --save
 | Argument      | Type                  | Required | Default | Example                                           |
 | ------------- | --------------------- | -------- | ------- | ------------------------------------------------- |
 | links         | Array of Link objects | Yes      | N/A     | `[{href:'https://www.bbc.com', text: 'The BBC'}]` |
-| copyrightText | String                | Yes      | N/A     | `'Copyright BBC News'`                            |
+| copyrightText | Node                | Yes      | N/A     | `<span>@ BBC News</span>`                            |
 | externalLink  | Link object           | Yes      | N/A     | `{href:'https://www.bbc.com', text: 'The BBC'}`   |
 | service | String | Yes | N/A | `'news'` |
 
@@ -30,7 +30,7 @@ const props = {
     { href: 'https://www.bbc.co.uk/news', text: 'BBC News' },
     { href: 'https://www.bbc.co.uk/sport', text: 'BBC Sport' },
   ],
-  copyrightText: 'Copyright BBC News',
+  copyrightText: <span>@ BBC News</span>,
   externalLink: { href: 'https://www.bbc.com', text: 'The BBC' },
   service: 'news',
 };

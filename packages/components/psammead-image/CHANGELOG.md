@@ -3,6 +3,12 @@
 <!-- prettier-ignore -->
 | Version | Description |
 |---------|-------------|
+| 1.2.2 | [PR#1942](https://github.com/bbc/psammead/pull/1942) Talos - Bump React to 16.9.0 |
+| 1.2.1 | [PR#1803](https://github.com/bbc/psammead/pull/1803/) Patches broken links on badges in documentation |
+| 1.2.0 | [PR#1794](https://github.com/bbc/psammead/pull/1794) Add david dependency badges |
+| 1.1.3 | [PR#1682](https://github.com/bbc/psammead/pull/1682) Move all dev dependencies to top level package.json |
+| 1.1.2 | [PR#1597](https://github.com/bbc/psammead/pull/1597) Bump @bbc/psammead-assets, @bbc/psammead-test-helpers |
+| 1.1.1 | [PR#1518](https://github.com/bbc/psammead/pull/1518) Clear unit test warnings |
 | 1.1.0 | [PR#1233](https://github.com/bbc/psammead/pull/1233) Add ESM modules entry |
 | 1.0.6 | [PR#1180](https://github.com/bbc/psammead/pull/1180) use `psammead-assets@1.0.6` and `psammead-test-helpers@1.0.2`|
 | 1.0.5 | [PR#1082](https://github.com/bbc/psammead/pull/1082) Bump lodash security vulnerability |

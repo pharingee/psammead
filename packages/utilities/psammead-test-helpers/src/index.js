@@ -1,35 +1,68 @@
-import renderer from 'react-test-renderer';
 import { render } from '@testing-library/react';
 import 'jest-styled-components';
-import ShallowRenderer from 'react-test-renderer/shallow';
+import deepClone from 'ramda/src/clone';
+import renderWithHelmet from './renderWithHelmet';
 
 export const shouldMatchSnapshot = (title, component) => {
-  it(title, () => {
-    const { container } = render(component);
-    expect(container.firstChild).toMatchSnapshot();
-  });
-};
+  it(title, done => {
+    // select the first child to remove the pointless wrapping div from snapshots
+    const removeWrappingDiv = container => container.firstChild;
+    renderWithHelmet(component).then(({ container }) => {
+      const hasOneChild = container.children.length === 1;
+      /*
+       * if the container has more than one child then it's a component that uses a
+       * fragment at the top level so we should not select the first child because it
+       * wouldn't snapshot the whole component
+       */
+      expect(
+        hasOneChild ? removeWrappingDiv(container) : container,
+      ).toMatchSnapshot();
 
-export const shallowRender = component => {
-  const shallowRenderer = new ShallowRenderer();
-  shallowRenderer.render(component);
-  const result = shallowRenderer.getRenderOutput();
-
-  return result;
-};
-
-export const shouldShallowMatchSnapshot = (title, component) => {
-  it(title, () => {
-    const tree = shallowRender(component);
-    expect(tree).toMatchSnapshot();
+      done();
+    });
   });
 };
 
 export const isNull = (title, component) => {
   it(title, () => {
-    const tree = renderer.create(component).toJSON();
-    expect(tree).toBeNull();
+    const { container } = render(component);
+    expect(container.firstChild).toBeNull();
   });
+};
+
+export const setWindowValue = (key, value) => {
+  const windowValue = window[key];
+  delete window[key];
+
+  let newValue = value;
+
+  if (value && typeof value === 'object') {
+    newValue = {
+      ...deepClone(windowValue),
+      ...value,
+    };
+  }
+
+  Object.defineProperty(window, key, {
+    value: newValue,
+    writable: true,
+  });
+};
+
+export const resetWindowValue = (key, value) => {
+  Object.defineProperty(window, key, {
+    value,
+    writable: true,
+  });
+};
+
+export const suppressPropWarnings = warnings => {
+  const { expectedWarnings } = window;
+  if (expectedWarnings && Array.isArray(expectedWarnings)) {
+    window.expectedWarnings = [...expectedWarnings, warnings];
+  } else {
+    window.expectedWarnings = [warnings];
+  }
 };
 
 const errorIfMissingKey = (keys, object, message) => {

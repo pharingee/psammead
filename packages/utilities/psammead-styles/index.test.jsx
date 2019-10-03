@@ -1,36 +1,47 @@
 import { testUtilityPackages } from '@bbc/psammead-test-helpers';
-import * as colours from './colours';
-import * as coloursFromSrc from './src/colours';
-import * as detection from './detection';
-import * as detectionFromSrc from './src/detection';
-import * as fonts from './fonts';
-import * as fontsFromSrc from './src/fonts';
 
 const fontsExpectedExports = {
-  F_REITH_SERIF_REGULAR: 'string',
-  F_REITH_SERIF_ITALIC: 'string',
-  F_REITH_SERIF_BOLD: 'string',
-  F_REITH_SERIF_BOLD_ITALIC: 'string',
-  F_REITH_SERIF_LIGHT: 'string',
-  F_REITH_SERIF_LIGHT_ITALIC: 'string',
-  F_REITH_SERIF_MEDIUM: 'string',
-  F_REITH_SERIF_MEDIUM_ITALIC: 'string',
-  F_REITH_SERIF_EXTRA_BOLD: 'string',
-  F_REITH_SERIF_EXTRA_BOLD_ITALIC: 'string',
-  F_REITH_SANS_REGULAR: 'string',
-  F_REITH_SANS_ITALIC: 'string',
-  F_REITH_SANS_BOLD: 'string',
-  F_REITH_SANS_BOLD_ITALIC: 'string',
-  F_REITH_SANS_LIGHT: 'string',
-  F_REITH_SANS_LIGHT_ITALIC: 'string',
-  F_REITH_SANS_MEDIUM: 'string',
-  F_REITH_SANS_MEDIUM_ITALIC: 'string',
-  F_REITH_SANS_EXTRA_BOLD: 'string',
-  F_REITH_SANS_EXTRA_BOLD_ITALIC: 'string',
-  F_REITH_SANS_CONDENSED_REGULAR: 'string',
-  F_REITH_SANS_CONDENSED_BOLD: 'string',
-  F_NASSIM_PERSIAN_REGULAR: 'string',
-  F_NASSIM_PERSIAN_BOLD: 'string',
+  F_REITH_SERIF_REGULAR: 'function',
+  F_REITH_SERIF_ITALIC: 'function',
+  F_REITH_SERIF_BOLD: 'function',
+  F_REITH_SERIF_BOLD_ITALIC: 'function',
+  F_REITH_SERIF_LIGHT: 'function',
+  F_REITH_SERIF_LIGHT_ITALIC: 'function',
+  F_REITH_SERIF_MEDIUM: 'function',
+  F_REITH_SERIF_MEDIUM_ITALIC: 'function',
+  F_REITH_SERIF_EXTRA_BOLD: 'function',
+  F_REITH_SERIF_EXTRA_BOLD_ITALIC: 'function',
+  F_REITH_SANS_REGULAR: 'function',
+  F_REITH_SANS_ITALIC: 'function',
+  F_REITH_SANS_BOLD: 'function',
+  F_REITH_SANS_BOLD_ITALIC: 'function',
+  F_REITH_SANS_LIGHT: 'function',
+  F_REITH_SANS_LIGHT_ITALIC: 'function',
+  F_REITH_SANS_MEDIUM: 'function',
+  F_REITH_SANS_MEDIUM_ITALIC: 'function',
+  F_REITH_SANS_EXTRA_BOLD: 'function',
+  F_REITH_SANS_EXTRA_BOLD_ITALIC: 'function',
+  F_REITH_SANS_CONDENSED_REGULAR: 'function',
+  F_REITH_SANS_CONDENSED_BOLD: 'function',
+  F_NASSIM_ARABIC_REGULAR: 'function',
+  F_NASSIM_ARABIC_BOLD: 'function',
+  F_NASSIM_PASHTO_REGULAR: 'function',
+  F_NASSIM_PASHTO_BOLD: 'function',
+  F_NASSIM_PERSIAN_REGULAR: 'function',
+  F_NASSIM_PERSIAN_BOLD: 'function',
+  F_NASSIM_URDU_REGULAR: 'function',
+  F_NASSIM_URDU_BOLD: 'function',
+  F_ISKOOLA_POTA_BBC_REGULAR: 'function',
+  F_ISKOOLA_POTA_BBC_BOLD: 'function',
+  F_LATHA_REGULAR: 'function',
+  F_LATHA_BOLD: 'function',
+  F_MALLANNA_REGULAR: 'function',
+  F_NOTO_SANS_ETHIOPIC_REGULAR: 'function',
+  F_NOTO_SANS_ETHIOPIC_BOLD: 'function',
+  F_PADAUK_REGULAR: 'function',
+  F_PADAUK_BOLD: 'function',
+  F_SHONAR_BANGLA_REGULAR: 'function',
+  F_SHONAR_BANGLA_BOLD: 'function',
 };
 
 const detectionExpectedExports = {
@@ -59,6 +70,7 @@ const coloursExpectedExports = {
   C_CONSENT_BACKGROUND: 'string',
   C_CONSENT_ACTION: 'string',
   C_CONSENT_CONTENT: 'string',
+  C_DARK_SALTIRE: 'string',
 };
 
 const expectedExports = {
@@ -67,26 +79,27 @@ const expectedExports = {
   fonts: fontsExpectedExports,
 };
 
-const actualExports = {
-  colours,
-  detection,
-  fonts,
-};
-
-const actualExportsFromSrc = {
-  colours: coloursFromSrc,
-  detection: detectionFromSrc,
-  fonts: fontsFromSrc,
+const getExports = key => {
+  const exports = {};
+  Object.keys(expectedExports).forEach(expectedExport => {
+    /* eslint-disable global-require, import/no-dynamic-require */
+    const packageJson = require(`./${expectedExport}/package.json`);
+    exports[
+      expectedExport
+    ] = require(`./${expectedExport}/${packageJson[key]}`);
+    /* eslint-enable global-require, import/no-dynamic-require */
+  });
+  return exports;
 };
 
 describe('Psammead styles', () => {
   it('should test all the utility exports exist and are the correct type', () => {
-    testUtilityPackages(actualExports, expectedExports, 'psammead-styles');
+    testUtilityPackages(getExports('main'), expectedExports, 'psammead-styles');
   });
 
   it('should test all the utility exports exist and are the correct type when coming from src/', () => {
     testUtilityPackages(
-      actualExportsFromSrc,
+      getExports('module'),
       expectedExports,
       'psammead-styles',
     );

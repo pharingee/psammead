@@ -3,6 +3,22 @@
 <!-- prettier-ignore -->
 | Version | Description |
 |---------|-------------|
+| 1.3.11 | [PR#2289](https://github.com/bbc/psammead/pull/2289) Talos - Bump Dependencies - @bbc/psammead-styles |
+| 1.3.10 | [PR#2273](https://github.com/bbc/psammead/pull/2273) Talos - Bump Dependencies - @bbc/psammead-styles |
+| 1.3.9 | [PR#2251](https://github.com/bbc/psammead/pull/2251) Talos - Bump Dependencies - @bbc/psammead-styles |
+| 1.3.8 | [PR#2145](https://github.com/bbc/psammead/pull/2145) Talos - Bump Dependencies - @bbc/psammead-styles |
+| 1.3.7 | [PR#2081](https://github.com/bbc/psammead/pull/2081) Talos - Bump Dependencies - @bbc/psammead-styles |
+| 1.3.6 | [PR#1926](https://github.com/bbc/psammead/pull/1926) Update component storybook to use latest inputProvider changes |
+| 1.3.5 | [PR#1993](https://github.com/bbc/psammead/pull/1993) Talos - Bump Dependencies |
+| 1.3.4 | [PR#1960](https://github.com/bbc/psammead/pull/1960) Change <React.Fragment> to <> |
+| 1.3.3 | [PR#1931](https://github.com/bbc/psammead/pull/1931) Talos - Bump Dependencies |
+| 1.3.2 | [PR#1804](https://github.com/bbc/psammead/pull/1804) Talos - Bump Dependencies |
+| 1.3.1 | [PR#1803](https://github.com/bbc/psammead/pull/1803/) Patches broken links on badges in documentation |
+| 1.3.0 | [PR#1794](https://github.com/bbc/psammead/pull/1794) Add david dependency badges |
+| 1.2.5 | [PR#1734](https://github.com/bbc/psammead/pull/1734) Talos - Bump Dependencies |
+| 1.2.4   | [PR#1685](https://github.com/bbc/psammead/pull/1685) Bump dependencies |
+| 1.2.3 | [PR#1682](https://github.com/bbc/psammead/pull/1682) Move all dev dependencies to top level package.json |
+| 1.2.2 | [PR#1599](https://github.com/bbc/psammead/pull/1599) Bump dependencies |
 | 1.2.1 | [PR#1413](https://github.com/bbc/psammead/pull/1413) Revert alpha changes while they undergo external accessibility review |
 | 1.2.0-alpha.3 | [PR#1365](https://github.com/bbc/psammead/pull/1365) Bump psammead-styles to 1.2.0 |
 | 1.2.0-alpha.2 | [PR#1405](https://github.com/bbc/psammead/pull/1405) Fix pre-wrap hover bug |

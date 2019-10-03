@@ -19,12 +19,10 @@ exports[`StoryPromo list should render correctly 1`] = `
 .c6 {
   font-size: 0.9375rem;
   line-height: 1.25rem;
-  font-size: 0.9375rem;
-  line-height: 1.25rem;
-  color: #222222;
   font-family: ReithSerif,Helvetica,Arial,sans-serif;
-  font-weight: 700;
+  font-weight: 500;
   font-style: normal;
+  color: #222222;
   margin: 0;
   padding-bottom: 0.5rem;
 }
@@ -32,10 +30,10 @@ exports[`StoryPromo list should render correctly 1`] = `
 .c7 {
   font-size: 0.9375rem;
   line-height: 1.125rem;
-  color: #3F3F42;
   font-family: ReithSans,Helvetica,Arial,sans-serif;
   font-weight: 400;
   font-style: normal;
+  color: #3F3F42;
   margin: 0;
   padding-bottom: 0.5rem;
 }
@@ -63,11 +61,11 @@ exports[`StoryPromo list should render correctly 1`] = `
 
 .c0 {
   list-style-type: none;
-  margin: 0.5rem 0 0 0;
+  margin: 0;
   padding: 0;
 }
 
-@supports (display:grid) {
+@supports (grid-template-columns:fit-content(200px)) {
   .c2 {
     display: grid;
     grid-template-columns: repeat(6,1fr);
@@ -81,7 +79,7 @@ exports[`StoryPromo list should render correctly 1`] = `
   }
 }
 
-@supports (display:grid) {
+@supports (grid-template-columns:fit-content(200px)) {
   .c3 {
     display: block;
     width: initial;
@@ -103,24 +101,10 @@ exports[`StoryPromo list should render correctly 1`] = `
   }
 }
 
-@media (min-width:20rem) and (max-width:37.4375rem) {
-  .c6 {
-    font-size: 1rem;
-    line-height: 1.25rem;
-  }
-}
-
 @media (min-width:37.5rem) {
   .c6 {
-    font-size: 1rem;
-    line-height: 1.25rem;
-  }
-}
-
-@media (min-width:37.5rem) {
-  .c6 {
-    font-size: 1.125rem;
-    line-height: 1.375rem;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
   }
 }
 
@@ -157,7 +141,7 @@ exports[`StoryPromo list should render correctly 1`] = `
   }
 }
 
-@supports (display:grid) {
+@supports (grid-template-columns:fit-content(200px)) {
   .c5 {
     display: block;
     width: initial;
@@ -178,9 +162,15 @@ exports[`StoryPromo list should render correctly 1`] = `
   }
 }
 
-@media (min-width:25rem) {
-  .c0 {
-    margin: 1rem 0 0 0;
+@media (min-width:37.5rem) {
+  .c1:first-child {
+    padding-top: 1rem;
+  }
+}
+
+@media (min-width:63rem) {
+  .c1:first-child {
+    padding-top: 1.5rem;
   }
 }
 

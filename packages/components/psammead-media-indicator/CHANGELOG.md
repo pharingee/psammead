@@ -3,6 +3,26 @@
 <!-- prettier-ignore -->
 | Version | Description |
 | ------- | ----------- |
+| 2.6.4 | [PR#2289](https://github.com/bbc/psammead/pull/2289) Talos - Bump Dependencies - @bbc/psammead-styles |
+| 2.6.3 | [PR#2273](https://github.com/bbc/psammead/pull/2273) Talos - Bump Dependencies - @bbc/psammead-styles |
+| 2.6.2 | [PR#2251](https://github.com/bbc/psammead/pull/2251) Talos - Bump Dependencies - @bbc/psammead-styles |
+| 2.6.1 | [PR#2230](https://github.com/bbc/psammead/pull/2230) Talos - Bump Dependencies - @bbc/psammead-assets |
+| 2.6.0 | [PR#2199](https://github.com/bbc/psammead/pull/2199) Pull in media icons from @bbc/psammead-assets |
+| 2.5.9 | [PR#2191](https://github.com/bbc/psammead/pull/2191) Talos - Bump Dependencies - @bbc/gel-foundations |
+| 2.5.8 | [PR#2145](https://github.com/bbc/psammead/pull/2145) Talos - Bump Dependencies - @bbc/psammead-styles |
+| 2.5.7 | [PR#2081](https://github.com/bbc/psammead/pull/2081) Talos - Bump Dependencies - @bbc/psammead-styles |
+| 2.5.6 | [PR#1993](https://github.com/bbc/psammead/pull/1993) Talos - Bump Dependencies |
+| 2.5.5 | [PR#1942](https://github.com/bbc/psammead/pull/1942) Talos - Bump React to 16.9.0 |
+| 2.5.4 | [PR#1931](https://github.com/bbc/psammead/pull/1931) Talos - Bump Dependencies |
+| 2.5.3 | [PR#1826](https://github.com/bbc/psammead/pull/1826) Talos - Bump Dependencies |
+| 2.5.2 | [PR#1804](https://github.com/bbc/psammead/pull/1804) Talos - Bump Dependencies |
+| 2.5.1 | [PR#1803](https://github.com/bbc/psammead/pull/1803/) Patches broken links on badges in documentation |
+| 2.5.0 | [PR#1794](https://github.com/bbc/psammead/pull/1794) Add david dependency badges |
+| 2.4.2 | [PR#1734](https://github.com/bbc/psammead/pull/1734) Talos - Bump Dependencies |
+| 2.4.1   | [PR#1685](https://github.com/bbc/psammead/pull/1685) Bump dependencies |
+| 2.4.0 | [PR#1669](https://github.com/bbc/psammead/pull/1669) Add `Index Alsos` support |
+| 2.3.3 | [PR#1682](https://github.com/bbc/psammead/pull/1682) Move all dev dependencies to top level package.json |
+| 2.3.2 | [PR#1598](https://github.com/bbc/psammead/pull/1598) Bump dependencies |
 | 2.3.1 | [PR#1365](https://github.com/bbc/psammead/pull/1365) Bump psammead-styles to 1.2.0 |
 | 2.3.0 | [PR#1240](https://github.com/bbc/psammead/pull/1240) Remove unused offscreen text |
 | 2.2.0 | [PR#1243](https://github.com/bbc/psammead/pull/1243) Add photogallery media icon |

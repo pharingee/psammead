@@ -1,14 +1,14 @@
+import 'storybook-chromatic';
 import React, { Fragment } from 'react';
 import { configure, addDecorator, addParameters } from '@storybook/react';
 import { create } from '@storybook/theming';
 import { withA11y } from '@storybook/addon-a11y';
-import styledNormalize from 'styled-normalize';
-import { createGlobalStyle } from 'styled-components';
 import {
   AMP_SCRIPT,
   AMP_NO_SCRIPT,
 } from '@bbc/psammead-assets/amp-boilerplate';
 import * as fontFaces from '@bbc/psammead-styles/fonts';
+import GlobalStyles from '@bbc/psammead-styles/global-styles';
 
 import Helmet from 'react-helmet';
 
@@ -29,34 +29,21 @@ addParameters({
   a11y: {
     options: {
       runOnly: {
-        type: "tag",
-        values: ["wcag2a", "wcag2aa", "wcag21aa"]
+        type: 'tag',
+        values: ['wcag2a', 'wcag2aa', 'wcag21aa'],
       },
       iframes: true,
-    }
-  }
+    },
+  },
 });
-
-const GlobalStyle = createGlobalStyle`
-  ${styledNormalize}
-
-  /* Box Sizing https://bit.ly/1A91I0J */
-  html {
-    box-sizing: border-box;
-    font-size: 100%;
-  }
-  *, *:before, *:after {
-    box-sizing: inherit;
-  }
-
-  
-  ${Object.values(fontFaces).join('')}
-
-`;
 
 addDecorator(story => (
   <Fragment>
-    <GlobalStyle />
+    <GlobalStyles
+      fonts={Object.values(fontFaces).map(fontFace => {
+        return fontFace();
+      })}
+    />
     {story()}
   </Fragment>
 ));

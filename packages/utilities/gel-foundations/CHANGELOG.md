@@ -3,6 +3,14 @@
 <!-- prettier-ignore -->
 | Version | Description |
 |---------|-------------|
+| 3.4.0 | [PR#2169](https://github.com/bbc/psammead/pull/2169) Add generic script exports - cyrillicAndLatin, devanagariAndGurmukhi & noAscendersOrDescenders |
+| 3.3.3 | [PR#1847](https://github.com/bbc/psammead/pull/1847) Fixed Telugu typos |
+| 3.3.2 | [PR#1806](https://github.com/bbc/psammead/pull/1806/) Change strings to booleans |
+| 3.3.1 | [PR#1803](https://github.com/bbc/psammead/pull/1803/) Patches broken links on badges in documentation |
+| 3.3.0 | [PR#1794](https://github.com/bbc/psammead/pull/1794) Add david dependency badges |
+| 3.2.2 | [PR#1758](https://github.com/bbc/psammead/pull/1758) Update Thai script type sizes for Minion and Brevier. |
+| 3.2.1 | [PR#1682](https://github.com/bbc/psammead/pull/1682) Move all dev dependencies to top level package.json |
+| 3.2.0 | [PR#1530](https://github.com/bbc/psammead/pull/1530) Add additional GEL Type sizes for large contexts (Atlas, Elephant, Imperial, Royal, Foolscap) |
 | 3.1.0 | [PR#1212](https://github.com/bbc/psammead/pull/1212) Export ESM modules via existing API |
 | 3.0.3 | [PR#1155](https://github.com/bbc/psammead/pull/1155) Use `psammead-test-helpers@1.0.2` |
 | 3.0.2 | [PR#783](https://github.com/bbc/psammead/pull/783) Update to latest psammead-test-helpers. Update snapshots. |

@@ -1,6 +1,6 @@
 import React from 'react';
-import { string, element, bool, shape } from 'prop-types';
-import styled from 'styled-components';
+import { string, element, bool, oneOf, shape } from 'prop-types';
+import styled, { css } from 'styled-components';
 import { scriptPropType } from '@bbc/gel-foundations/prop-types';
 import {
   C_CONSENT_BACKGROUND,
@@ -21,6 +21,11 @@ import {
   GEL_SPACING,
 } from '@bbc/gel-foundations/spacings';
 import { getSansRegular } from '@bbc/psammead-styles/font-styles';
+
+const ltrRtl = (ltrValue, rtlValue) =>
+  css`
+    ${({ dir }) => (dir === 'ltr' ? ltrValue : rtlValue)};
+  `;
 
 const Wrapper = styled.div`
 ${({ service }) => getSansRegular(service)}
@@ -52,16 +57,16 @@ const CenterWrapper = styled.div`
 `;
 
 const Title = styled.h2`
-  ${props => (props.script ? getGreatPrimer(props.script) : '')};
+  ${({ script }) => script && getGreatPrimer(script)};
   color: ${C_WHITE};
   font-weight: 700;
   padding: 0;
   margin: 0;
 
   @media (min-width: ${GEL_GROUP_3_SCREEN_WIDTH_MIN}) {
+    float: ${ltrRtl('left', 'right')};
+    ${ltrRtl('margin-right: 3.5%;', 'margin-left: 3.5%;')}
     width: 22%;
-    margin-right: 3.5%;
-    float: left;
   }
 `;
 
@@ -69,7 +74,7 @@ const Title = styled.h2`
  * The '& li + li' below allows for styling every `li` element except the first.
  */
 const Options = styled.ul`
-  ${props => (props.script ? getLongPrimer(props.script) : '')};
+  ${({ script }) => script && getLongPrimer(script)};
   color: ${C_CONSENT_ACTION};
   font-weight: 600;
   padding: 0;
@@ -82,7 +87,7 @@ const Options = styled.ul`
 
   @media (min-width: ${GEL_GROUP_3_SCREEN_WIDTH_MIN}) {
     width: 18%;
-    float: right;
+    float: ${ltrRtl('right', 'left')};
   }
 `;
 
@@ -94,12 +99,12 @@ const hoverFocusStyles = `
 `;
 
 export const ConsentBannerText = styled.p`
-  ${props => (props.script ? getLongPrimer(props.script) : '')};
+  ${({ script }) => script && getLongPrimer(script)};
   color: ${C_CONSENT_CONTENT};
 
   @media (min-width: ${GEL_GROUP_3_SCREEN_WIDTH_MIN}) {
     margin: 0;
-    float: left;
+    float: ${ltrRtl('left', 'right')};
     width: 53%;
   }
 
@@ -115,7 +120,7 @@ export const ConsentBannerText = styled.p`
 // prop on styled component as required for the amp useage
 const ListItem = styled.li`
   & button {
-    ${props => (props.script ? getGreatPrimer(props.script) : '')};
+    ${({ script }) => script && getGreatPrimer(script)};
     color: ${C_CONSENT_ACTION};
     font-weight: 700;
     background: none;
@@ -136,6 +141,7 @@ const ListItem = styled.li`
 `;
 
 export const ConsentBanner = ({
+  dir,
   title,
   text,
   accept,
@@ -145,19 +151,26 @@ export const ConsentBanner = ({
   script,
   service,
 }) => (
-  <Wrapper id={id} hidden={hidden} service={service}>
-    <CenterWrapper>
-      <Title script={script}>{title}</Title>
+  <Wrapper dir={dir} hidden={hidden} id={id} service={service}>
+    <CenterWrapper dir={dir}>
+      <Title dir={dir} script={script}>
+        {title}
+      </Title>
       {text}
-      <Options script={script}>
-        <ListItem script={script}>{accept}</ListItem>
-        <ListItem script={script}>{reject}</ListItem>
+      <Options dir={dir} script={script}>
+        <ListItem dir={dir} script={script}>
+          {accept}
+        </ListItem>
+        <ListItem dir={dir} script={script}>
+          {reject}
+        </ListItem>
       </Options>
     </CenterWrapper>
   </Wrapper>
 );
 
 ConsentBanner.propTypes = {
+  dir: oneOf(['ltr', 'rtl']),
   title: string.isRequired,
   text: element.isRequired,
   accept: element.isRequired,
@@ -169,6 +182,7 @@ ConsentBanner.propTypes = {
 };
 
 ConsentBanner.defaultProps = {
+  dir: 'ltr',
   id: null,
   hidden: null,
 };

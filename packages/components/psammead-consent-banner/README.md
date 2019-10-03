@@ -1,4 +1,4 @@
-# psammead-consent-banner - [![Known Vulnerabilities](https://snyk.io/test/github/bbc/psammead/badge.svg?targetFile=packages%2Fcomponents%2Fpsammead-consent-banner%2Fpackage.json)](https://snyk.io/test/github/bbc/psammead?targetFile=packages%2Fcomponents%2Fpsammead-consent-banner%2Fpackage.json) [![Storybook](https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg?sanitize=true)](https://bbc.github.io/psammead/?path=/story/consent-banner--default) [![GitHub license](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/bbc/psammead/blob/latest/LICENSE) [![npm version](https://img.shields.io/npm/v/@bbc/psammead-consent-banner.svg)](https://www.npmjs.com/package/@bbc/psammead-consent-banner) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/bbc/psammead/blob/latest/CONTRIBUTING.md)
+# psammead-consent-banner - [![Known Vulnerabilities](https://snyk.io/test/github/bbc/psammead/badge.svg?targetFile=packages%2Fcomponents%2Fpsammead-consent-banner%2Fpackage.json)](https://snyk.io/test/github/bbc/psammead?targetFile=packages%2Fcomponents%2Fpsammead-consent-banner%2Fpackage.json) [![Dependency Status](https://david-dm.org/bbc/psammead.svg?path=packages/components/psammead-consent-banner)](https://david-dm.org/bbc/psammead?path=packages/components/psammead-consent-banner) [![peerDependencies Status](https://david-dm.org/bbc/psammead/peer-status.svg?path=packages/components/psammead-consent-banner)](https://david-dm.org/bbc/psammead?path=packages/components/psammead-consent-banner&type=peer) [![Storybook](https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg?sanitize=true)](https://bbc.github.io/psammead/?path=/story/consent-banner--default) [![GitHub license](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/bbc/psammead/blob/latest/LICENSE) [![npm version](https://img.shields.io/npm/v/@bbc/psammead-consent-banner.svg)](https://www.npmjs.com/package/@bbc/psammead-consent-banner) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/bbc/psammead/blob/latest/CONTRIBUTING.md)
 
 ## Description
 
@@ -21,6 +21,7 @@ The `psammead-consent-banner` component is a styled `div` that encapsulates info
 | reject | element | Yes | N/A | `<a href="https://www.bbc.co.uk/usingthebbc/your-data-matters">Find out what's changed</a>` |
 | id | string | No | Null | `ConsentBanner` |
 | hidden | bool | No | Null | `false` |
+| dir | string | No | `'ltr'` | One of `'rtl'` `'ltr'` |
 | script | script | Yes | N/A | { canon: { groupA: { fontSize: '28', lineHeight: '32',}, groupB: { fontSize: '32', lineHeight: '36', }, groupD: { fontSize: '44', lineHeight: '48', }, }, trafalgar: { groupA: { fontSize: '20', lineHeight: '24', }, groupB: { fontSize: '24', lineHeight: '28', }, groupD: { fontSize: '32', lineHeight: '36', }, }, } |
 | service | string | Yes | N/A | `'news'` |
 
@@ -45,7 +46,7 @@ const Reject = (
 );
 
 const Text = (
-  <ConsentBannerText script={latin} service="news">
+  <ConsentBannerText dir="ltr" script={latin} service="news">
     This is some text with <a href="https://www.bbc.com/news">a link</a> inside
     the consent banner. We have made some important changes to our Privacy and
     Cookie Policy.
@@ -53,6 +54,7 @@ const Text = (
 );
 
 const props = {
+  dir: 'ltr',
   title: 'We have updated our Privacy and Cookies Policy',
   text: Text,
   accept: Accept,

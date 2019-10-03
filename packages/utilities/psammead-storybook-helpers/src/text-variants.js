@@ -1,5 +1,5 @@
 const LANGUAGE_VARIANTS = {
-  afaanOromoo: {
+  afaanoromoo: {
     text:
       "Gammadoo ta'uun akkanumaan hin dhufu, waan shaakalamuudha jetti saantoos.",
     script: 'latin',
@@ -38,7 +38,7 @@ const LANGUAGE_VARIANTS = {
     text:
       'Medidas anunciadas no encontro entre Bolsonaro e Trump celebram aproximação com o governo americano - mas elas agora precisam passar pelo teste da concretização',
     script: 'latinDiacritics',
-    locale: 'pt',
+    locale: 'pt-br',
   },
   burmese: {
     text: 'အောက်စဖို့ဒ် ဆရာတော် ပါမောက္ခ ဒေါက်တာအရှင်ဓမ္မသာမိ',
@@ -83,7 +83,7 @@ const LANGUAGE_VARIANTS = {
     script: 'latinDiacritics',
     locale: 'ig',
   },
-  indonesian: {
+  indonesia: {
     text:
       '"Apa yang terjadi di Selandia Baru adalah kekerasan yang dibawa oleh seseorang yang tumbuh dan belajar ideologinya di tempat lain,\' kata Jacinda Ardern.',
     script: 'latin',
@@ -147,7 +147,7 @@ const LANGUAGE_VARIANTS = {
   serbianCyr: {
     text: 'Караџић се годинама крио пре него што је ухапшен 2008. године',
     script: 'cyrillic',
-    locale: 'sr',
+    locale: 'sr-cyrl',
   },
   serbianLat: {
     text: 'Karadžić se godinama krio pre nego što je uhapšen 2008. godine',

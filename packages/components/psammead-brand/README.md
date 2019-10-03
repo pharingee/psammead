@@ -1,10 +1,10 @@
-# psammead-brand - [![Known Vulnerabilities](https://snyk.io/test/github/bbc/psammead/badge.svg?targetFile=packages%2Fcomponents%2Fpsammead-brand%2Fpackage.json)](https://snyk.io/test/github/bbc/psammead?targetFile=packages%2Fcomponents%2Fpsammead-brand%2Fpackage.json) [![Storybook](https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg?sanitize=true)](https://bbc.github.io/psammead/?path=/story/brand--default) [![GitHub license](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/bbc/psammead/blob/latest/LICENSE) [![npm version](https://img.shields.io/npm/v/@bbc/psammead-brand.svg)](https://www.npmjs.com/package/@bbc/psammead-brand) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/bbc/psammead/blob/latest/CONTRIBUTING.md)
+# psammead-brand - [![Known Vulnerabilities](https://snyk.io/test/github/bbc/psammead/badge.svg?targetFile=packages%2Fcomponents%2Fpsammead-brand%2Fpackage.json)](https://snyk.io/test/github/bbc/psammead?targetFile=packages%2Fcomponents%2Fpsammead-brand%2Fpackage.json) [![Dependency Status](https://david-dm.org/bbc/psammead.svg?path=packages/components/psammead-brand)](https://david-dm.org/bbc/psammead?path=packages/components/psammead-brand) [![peerDependencies Status](https://david-dm.org/bbc/psammead/peer-status.svg?path=packages/components/psammead-brand)](https://david-dm.org/bbc/psammead?path=packages/components/psammead-brand&type=peer) [![Storybook](https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg?sanitize=true)](https://bbc.github.io/psammead/?path=/story/brand--default) [![GitHub license](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/bbc/psammead/blob/latest/LICENSE) [![npm version](https://img.shields.io/npm/v/@bbc/psammead-brand.svg)](https://www.npmjs.com/package/@bbc/psammead-brand) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/bbc/psammead/blob/latest/CONTRIBUTING.md)
 
 ## Description
 
 The `Brand` component provides the BBC service logo (as SVG), nested inside a styled link and div. The link is currently hardcoded to "https://www.bbc.co.uk/news".
 
-`Brand` takes a `product`, `svgHeight`, `minWidth`, `maxWidth`, `url`, `serviceLocalisedName` and `svg` as props.
+`Brand` takes a `product`, `svgHeight`, `minWidth`, `maxWidth`, `url`, `serviceLocalisedName`, `backgroundColour`, `logoColour` and `svg` as props.
 
 The `product` is passed to a [VisuallyHiddenText](https://github.com/bbc/psammead/tree/latest/packages/components/VisuallyHiddenText) component, nested inside Brand.
 
@@ -15,6 +15,8 @@ The `svg` prop must contain a `group`, `viewbox` values and a `ratio`, which is 
 The `minWidth` and `maxWidth` values are required to allow the ability for the `svg` element to dynamically scale as the viewport becomes a very small size EG: feature phones.
 
 The `svgHeight` value acts as a placeholder for the `svg` element meaning the overall banner height does not change with the dynamic scaling, also the `height` allows the contents of the `svg` element to remain vertically centred within the banner at all times.
+
+The `backgroundColour` is the background colour and `logoColour` is the colour of the SVG and the underline when hovering/focusing on the brand. 
 
 The `url` value is the link that points to the frontpage of the service associated with the `svg`.
 
@@ -32,6 +34,8 @@ The `url` value is the link that points to the frontpage of the service associat
 | minWidth | Number | yes | N/A | `240` |
 | maxWidth | Number | yes | N/A | `380` |
 | svg | Object | yes | N/A | { group: `(<g fillrule="evenodd"><path d="M84.32" /></g>)`, viewbox: { height: 24, width: 167.95 }, ratio: 6.9979 } |
+| backgroundColour | string | yes | N/A | `${C_POSTBOX}` or relevant string hex code |
+| logoColour | string | yes | N/A | `${C_WHITE}` or relevant string hex code |
 | url | String | no | N/A | `https://www.bbc.co.uk/news` |
 | serviceLocalisedName | String | no | N/A | `'Yoruba'` |
 | borderTop | bool | no | `false` | `true` |
@@ -46,6 +50,7 @@ When using `Brand` in the header, you should ensure that `borderBottom` prop is 
 ```jsx
 import Brand from '@bbc/psammead-brand';
 import { igbo } from '@bbc/psammead-assets/svgs';
+import { C_POSTBOX, C_WHITE } from '@bbc/psammead-styles/colours';
 
 const Header = (product, serviceName) => (
   <header role="banner">
@@ -57,6 +62,8 @@ const Header = (product, serviceName) => (
       minWidth={180}
       svg={igbo}
       url="https://www.bbc.co.uk/news"
+      backgroundColour={backgroundColour}
+      logoColour={logoColour}
       borderBottom
     />
   </header>

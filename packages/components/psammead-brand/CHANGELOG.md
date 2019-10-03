@@ -3,6 +3,26 @@
 <!-- prettier-ignore -->
 | Version | Description |
 | ------- | ----------- |
+| 5.0.5 | [PR#2289](https://github.com/bbc/psammead/pull/2289) Talos - Bump Dependencies - @bbc/psammead-styles |
+| 5.0.4 | [PR#2273](https://github.com/bbc/psammead/pull/2273) Talos - Bump Dependencies - @bbc/psammead-styles |
+| 5.0.3 | [PR#2251](https://github.com/bbc/psammead/pull/2251) Talos - Bump Dependencies - @bbc/psammead-styles |
+| 5.0.2 | [PR#2191](https://github.com/bbc/psammead/pull/2191) Talos - Bump Dependencies - @bbc/gel-foundations |
+| 5.0.1 | [PR#2145](https://github.com/bbc/psammead/pull/2145) Talos - Bump Dependencies - @bbc/psammead-styles |
+| 5.0.0 | [PR#2127](https://github.com/bbc/psammead/pull/2127) Remove default colours. Add required props backgroundColour & logoColour |
+| 4.3.8 | [PR#2081](https://github.com/bbc/psammead/pull/2081) Talos - Bump Dependencies - @bbc/psammead-styles, @bbc/psammead-visually-hidden-text |
+| 4.3.7 | [PR#1993](https://github.com/bbc/psammead/pull/1993) Talos - Bump Dependencies |
+| 4.3.6 | [PR#1960](https://github.com/bbc/psammead/pull/1960) Change <React.Fragment> to <> |
+| 4.3.5 | [PR#1942](https://github.com/bbc/psammead/pull/1942) Talos - Bump React to 16.9.0 |
+| 4.3.4 | [PR#1931](https://github.com/bbc/psammead/pull/1931) Talos - Bump Dependencies |
+| 4.3.3 | [PR#1826](https://github.com/bbc/psammead/pull/1826) Talos - Bump Dependencies |
+| 4.3.2 | [PR#1804](https://github.com/bbc/psammead/pull/1804) Talos - Bump Dependencies |
+| 4.3.1 | [PR#1803](https://github.com/bbc/psammead/pull/1803/) Patches broken links on badges in documentation |
+| 4.3.0 | [PR#1794](https://github.com/bbc/psammead/pull/1794) Add david dependency badges |
+| 4.2.6 | [PR#1734](https://github.com/bbc/psammead/pull/1734) Talos - Bump Dependencies |
+| 4.2.5   | [PR#1685](https://github.com/bbc/psammead/pull/1685) Bump dependencies |
+| 4.2.4 | [PR#1682](https://github.com/bbc/psammead/pull/1682) Move all dev dependencies to top level package.json |
+| 4.2.3   | [PR#1599](https://github.com/bbc/psammead/pull/1599) Bump dependencies |
+| 4.2.2 | [PR#1518](https://github.com/bbc/psammead/pull/1518) Clear unit test warnings |
 | 4.2.1 | [PR#1365](https://github.com/bbc/psammead/pull/1365) Bump psammead-styles to 1.2.0 |
 | 4.2.0 | [PR#1233](https://github.com/bbc/psammead/pull/1233) Add ESM modules entry |
 | 4.1.12 | [PR#1181](https://github.com/bbc/psammead/pull/1181) Bump dependencies |

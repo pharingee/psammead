@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { node, bool } from 'prop-types';
+import { node, bool, string, oneOf } from 'prop-types';
 import {
   GEL_SPACING,
   GEL_SPACING_DBL,
@@ -11,16 +11,26 @@ import {
   GEL_GROUP_2_SCREEN_WIDTH_MIN,
   GEL_GROUP_2_SCREEN_WIDTH_MAX,
   GEL_GROUP_3_SCREEN_WIDTH_MIN,
+  GEL_GROUP_3_SCREEN_WIDTH_MAX,
   GEL_GROUP_5_SCREEN_WIDTH_MIN,
+  GEL_GROUP_4_SCREEN_WIDTH_MAX,
 } from '@bbc/gel-foundations/breakpoints';
 import {
   getPica,
-  getGreatPrimer,
   getParagon,
   getLongPrimer,
 } from '@bbc/gel-foundations/typography';
-import { C_EBON, C_SHADOW, C_METAL } from '@bbc/psammead-styles/colours';
-import { getSansRegular, getSerifBold } from '@bbc/psammead-styles/font-styles';
+import {
+  C_EBON,
+  C_METAL,
+  C_POSTBOX,
+  C_SHADOW,
+} from '@bbc/psammead-styles/colours';
+import {
+  getSansRegular,
+  getSansBold,
+  getSerifMedium,
+} from '@bbc/psammead-styles/font-styles';
 import { grid } from '@bbc/psammead-styles/detection';
 
 const twoOfSixColumnsMaxWidthScaleable = `33.33%`;
@@ -37,6 +47,8 @@ const eightOfTwelveColumnsMaxScaleable = `66.67%`;
 
 const fullWidthColumnsMaxScaleable = `100%`;
 // (12 / 12) * 100 = 100 = 100%
+
+const halfWidthColumnsMaxScaleable = `50%`;
 
 const StoryPromoWrapper = styled.div`
   position: relative;
@@ -59,12 +71,8 @@ const StoryPromoWrapper = styled.div`
 const ImageGridColumnsTopStory = css`
   grid-column: 1 / span 6;
 
-  @media (min-width: ${GEL_GROUP_3_SCREEN_WIDTH_MIN}) {
-    grid-column: 1 / span 2;
-  }
-
-  @media (min-width: ${GEL_GROUP_5_SCREEN_WIDTH_MIN}) {
-    grid-column: 1 / span 4;
+  @media (min-width: ${GEL_GROUP_3_SCREEN_WIDTH_MIN}) and (max-width: ${GEL_GROUP_4_SCREEN_WIDTH_MAX}) {
+    grid-column: 1 / span 3;
   }
 `;
 
@@ -81,7 +89,7 @@ const ImageGridFallbackTopStory = css`
   width: ${fullWidthColumnsMaxScaleable};
 
   @media (min-width: ${GEL_GROUP_3_SCREEN_WIDTH_MIN}) {
-    width: ${twoOfSixColumnsMaxWidthScaleable};
+    width: ${halfWidthColumnsMaxScaleable};
     margin-bottom: 0;
   }
 `;
@@ -130,52 +138,67 @@ const InlineMediaIndicator = styled.div`
       `}
 `;
 
+// This is needed to get around the issue of IE11 not supporting
+// nested media queries (which would be returned by getParagon() and
+// getGreatPrimer())
+const getHeadlineFontStyle = (script, topStory) => {
+  const type = topStory ? 'paragon' : 'greatPrimer';
+
+  const fontSize = script[type].groupD.fontSize / 16;
+  const lineHeight = script[type].groupD.lineHeight / 16;
+
+  return css`
+    font-size: ${fontSize}rem;
+    line-height: ${lineHeight}rem;
+  `;
+};
+
 export const Headline = styled.h3`
-  ${props => (props.script ? getPica(props.script) : '')};
-
-  ${({ script, topStory }) => {
-    if (!script) {
-      return '';
-    }
-
-    return topStory ? getParagon(script) : getPica(script);
-  }}
-
+  ${({ script, topStory }) =>
+    script && (topStory ? getParagon(script) : getPica(script))}
+  ${({ service }) => getSerifMedium(service)}
   color: ${C_EBON};
-  ${({ service }) => getSerifBold(service)}
   margin: 0; /* Reset */
   padding-bottom: ${GEL_SPACING};
+
   @media (min-width: ${GEL_GROUP_3_SCREEN_WIDTH_MIN}) {
-    ${props => (props.script ? getGreatPrimer(props.script) : '')};
+    ${({ script, topStory }) =>
+      script && getHeadlineFontStyle(script, topStory)}
   }
 `;
 
 export const Summary = styled.p`
-  ${props => (props.script ? getLongPrimer(props.script) : '')};
-  color: ${C_SHADOW};
+  ${({ script }) => script && getLongPrimer(script)};
   ${({ service }) => getSansRegular(service)}
+  color: ${C_SHADOW};
   margin: 0; /* Reset */
   padding-bottom: ${GEL_SPACING};
 
   ${({ topStory }) =>
-    !topStory &&
-    css`
-      @media (max-width: ${GEL_GROUP_2_SCREEN_WIDTH_MAX}) {
-        display: none;
-        visibility: hidden;
-      }
-    `}
+    topStory
+      ? css`
+          @media (min-width: ${GEL_GROUP_3_SCREEN_WIDTH_MIN}) and (max-width: ${GEL_GROUP_3_SCREEN_WIDTH_MAX}) {
+            display: none;
+            visibility: hidden;
+          }
+        `
+      : css`
+          @media (max-width: ${GEL_GROUP_2_SCREEN_WIDTH_MAX}) {
+            display: none;
+            visibility: hidden;
+          }
+        `}
 `;
 
 const TextGridColumnsTopStory = css`
   grid-column: 1 / span 6;
 
   @media (min-width: ${GEL_GROUP_3_SCREEN_WIDTH_MIN}) {
-    grid-column: 3 / span 4;
+    grid-column: 4 / span 3;
   }
 
   @media (min-width: ${GEL_GROUP_5_SCREEN_WIDTH_MIN}) {
-    grid-column: 5 / span 8;
+    grid-column: 7 / span 6;
   }
 `;
 
@@ -189,7 +212,7 @@ const TextGridColumns = css`
 
 const TextGridFallbackTopStory = css`
   @media (min-width: ${GEL_GROUP_3_SCREEN_WIDTH_MIN}) {
-    width: ${fourOfSixColumnsMaxWidthScaleable};
+    width: ${halfWidthColumnsMaxScaleable};
   }
 `;
 
@@ -221,6 +244,9 @@ const TextGridItem = styled.div`
   }
 `;
 
+/*
+ *  Link
+ */
 export const Link = styled.a`
   position: static;
   color: ${C_EBON};
@@ -248,6 +274,29 @@ export const Link = styled.a`
   }
 `;
 
+/*
+ *  Live Label
+ */
+export const LiveLabel = styled.span.attrs({ 'aria-hidden': 'true' })`
+  ${({ service }) => getSansBold(service)}
+  color: ${C_POSTBOX};
+  display: inline-block;
+  ${({ dir }) =>
+    dir === 'rtl' ? 'margin-left: 0.5rem;' : 'margin-right: 0.5rem;'}
+`;
+
+LiveLabel.propTypes = {
+  service: string.isRequired,
+  dir: oneOf(['rtl', 'ltr']),
+};
+
+LiveLabel.defaultProps = {
+  dir: 'ltr',
+};
+
+/*
+ *  Story Promo
+ */
 const StoryPromo = ({ image, info, mediaIndicator, topStory }) => (
   <StoryPromoWrapper>
     <ImageGridItem topStory={topStory}>

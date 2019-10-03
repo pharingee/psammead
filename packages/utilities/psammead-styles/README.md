@@ -1,4 +1,4 @@
-# psammead-styles - [![Known Vulnerabilities](https://snyk.io/test/github/bbc/psammead/badge.svg?targetFile=packages%2Futilities%2Fpsammead-styles%2Fpackage.json)](https://snyk.io/test/github/bbc/psammead?targetFile=packages%2Futilities%2Fpsammead-styles%2Fpackage.json) [![GitHub license](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/bbc/psammead/blob/latest/LICENSE) [![npm version](https://img.shields.io/npm/v/@bbc/psammead-styles.svg)](https://www.npmjs.com/package/@bbc/psammead-styles) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/bbc/psammead/blob/latest/CONTRIBUTING.md)
+# psammead-styles - [![Known Vulnerabilities](https://snyk.io/test/github/bbc/psammead/badge.svg?targetFile=packages%2Futilities%2Fpsammead-styles%2Fpackage.json)](https://snyk.io/test/github/bbc/psammead?targetFile=packages%2Futilities%2Fpsammead-styles%2Fpackage.json) [![Dependency Status](https://david-dm.org/bbc/psammead.svg?path=packages/utilities/psammead-styles)](https://david-dm.org/bbc/psammead?path=packages/utilities/psammead-styles) [![peerDependencies Status](https://david-dm.org/bbc/psammead/peer-status.svg?path=packages/utilities/psammead-styles)](https://david-dm.org/bbc/psammead?path=packages/utilities/psammead-styles&type=peer) [![GitHub license](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/bbc/psammead/blob/latest/LICENSE) [![npm version](https://img.shields.io/npm/v/@bbc/psammead-styles.svg)](https://www.npmjs.com/package/@bbc/psammead-styles) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/bbc/psammead/blob/latest/CONTRIBUTING.md)
 
 This package provides a collection of string constants for use in CSS, containing non-GEL styling details that are bespoke to specific BBC services and products
 
@@ -6,9 +6,11 @@ This package provides a collection of string constants for use in CSS, containin
 
 `/colours` - Project-defined colours that will be required by multiple Psammead components or themes. These colours are not defined by GEL.
 `/detection` - Project-defined CSS feature detection statements.
-`/fonts` - Project-defined browser behaviours for the Reith font. The primary reason these are not considered GEL-defined (and not part of [`@bbc/gel-foundations`](https://www.npmjs.com/package/@bbc/gel-foundations)) is due to the custom weighting and loading definitions. [More details on the font-faces defined in this package are available here.](./font-faces.md)
+`/fonts` - Project-defined browser behaviours for the Reith font. The primary reason these are not considered GEL-defined (and not part of [`@bbc/gel-foundations`](https://www.npmjs.com/package/@bbc/gel-foundations)) is due to the custom weighting and loading definitions. [More details on the font-faces defined in this package are available here.](./font-faces.md). Also includes declarations for all World Service fonts.
 
 `/font-styles` provides functions that can be used to get font-styles for different services. If a font-style is not available all the functions will fallback to regular sans font-style of the service.
+
+`/global-styles` Provides project-defined global styles defined using `styled-normalize` and box sizing.
 
 ## Installation
 
@@ -82,6 +84,25 @@ const someGridUsingComponent = css`
 
   /* fallback CSS */
 `;
+```
+
+### global-styles
+
+We export a global styles component which uses `styled-normalize` and defines css rules for `box-sizing`. 
+This component accepts an optional `fonts` prop which is an array of font styles to be applied in the global styles.
+
+```js
+import GlobalStyles from '@bbc/psammead-styles/global-styles';
+import {
+  F_REITH_SANS_REGULAR,
+  F_REITH_SERIF_MEDIUM,
+} from '@bbc/psammead-styles/fonts';
+
+<GlobalStyles fonts={[
+      F_REITH_SANS_REGULAR,
+      F_REITH_SERIF_MEDIUM,
+    ]}
+/>
 ```
 
 ## Contributing
