@@ -7,7 +7,7 @@ const createPullRequest = ({ packages, bumpedPackagesObj, branchName }) => {
     token: process.env.GITHUB_TOKEN,
   });
 
-  const repo = gh.getRepo('bbc', 'psammead');
+  const repo = gh.getRepo('pharingee', 'psammead');
   const title = `Talos - Bump ${getPackageNames(packages)}`;
 
   // eslint-disable-next-line no-console
