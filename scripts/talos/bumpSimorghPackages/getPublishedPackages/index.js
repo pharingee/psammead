@@ -1,11 +1,11 @@
 const getPublishedPackages = bumpedPackages => {
   const publishedPackages = {};
   Object.values(bumpedPackages).forEach(bumpedPackageList => {
-    bumpedPackageList.forEach(bumpedPackage => {
-      const sections = bumpedPackage.replace(/  +/g, ' ').split(' ');
-      if (sections.length === 4) {
-        const packageName = sections[0];
-        const version = sections[3];
+    bumpedPackageList.forEach(publishedPackage => {
+      const isUpgraded = publishedPackage.includes('  →  ');
+      if (isUpgraded) {
+        const [packageName] = publishedPackage.match(/^@bbc\/psammead-\S+/);
+        const [version] = publishedPackage.match(/(?<=→\s\s).+$/);
         publishedPackages[packageName] = version;
       }
     });
