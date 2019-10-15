@@ -5,7 +5,7 @@ const readFileSync = require('../../utilities/readFileSync');
 const updatePackageFile = require('../updatePackageFile');
 
 const upgradeDependencies = changedPackages => {
-  const upgradedPackages = [];
+  const upgradedPackages = {};
 
   getPackageNames().forEach(packageName => {
     const path = `${getPackagePath(packageName)}/package.json`;
@@ -16,8 +16,8 @@ const upgradeDependencies = changedPackages => {
     } = updatePackageFile(packageJson, changedPackages);
 
     if (Object.keys(packageUpgradedPackages)) {
-      writeFileSync(path, JSON.stringify(newPackageJson, null, 2));
-      upgradedPackages.push(packageUpgradedPackages);
+      writeFileSync(path, `${JSON.stringify(newPackageJson, null, 2)}\n`);
+      upgradedPackages[packageName] = packageUpgradedPackages;
     }
   });
 

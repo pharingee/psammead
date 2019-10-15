@@ -5,6 +5,6 @@ const commitChanges = message =>
     command: `git add package.json package-lock.json CHANGELOG.md packages`,
   })
     .then(() => runExec({ command: `git commit -m "${message}"` }))
-    .then(() => runExec({ command: `git push origin HEAD` }));
+    .then(() => runExec({ command: `git push origin --no-verify HEAD` }));
 
 module.exports = commitChanges;
